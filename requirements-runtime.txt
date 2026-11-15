@@ -6,5 +6,6 @@ pydantic-settings==2.7.0
 httpx==0.28.1
 tzdata>=2025.1
 numpy==2.2.1
+pandas==2.2.3
 openpyxl==3.1.5
 langgraph==1.2.14
