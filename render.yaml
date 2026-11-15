@@ -1,0 +1,33 @@
+# Render Blueprint: Dashboard → New → Blueprint → select this repository.
+services:
+  - type: web
+    name: selene-backend
+    runtime: docker
+    plan: free
+    region: singapore
+    branch: main
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: "8000"
+      - key: CORS_ORIGINS
+        value: https://selenenasa.netlify.app
+      - key: TRUSTED_HOSTS
+        value: "*.onrender.com,localhost,127.0.0.1"
+      # Render's proxy sits in front of the app; trust its forwarded client IP
+      # so rate limits apply per visitor. Untrusted peers fall back to their own IP.
+      - key: TRUST_PROXY_HEADERS
+        value: "true"
+      - key: TRUSTED_PROXY_IPS
+        value: 10.0.0.0/8
+      - key: GROQ_API_KEY
+        sync: false
+      - key: USE_SPICE
+        value: "false"
+      - key: USE_TERRAIN_DEM
+        value: "false"
+      - key: USE_TERRAIN_SHADOWS
+        value: "false"
+      - key: USE_DIVINER
+        value: "false"

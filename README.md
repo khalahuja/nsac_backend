@@ -4,7 +4,7 @@
 
 The FastAPI service behind Selene. It computes lunar environmental conditions (Sun and Earth geometry, illumination, temperature), forecasts and Excel exports, requirements-based mission-operations screening, NASA dataset analysis, LangGraph mission workflows and the optional Groq-powered assistant.
 
-- **Frontend:** [khalahuja/nsac_frontend](https://github.com/khalahuja/nsac_frontend), live at https://coruscating-melomakarona-7267df.netlify.app
+- **Frontend:** [khalahuja/nsac_frontend](https://github.com/khalahuja/nsac_frontend), live at https://selenenasa.netlify.app
 - **Interactive API docs:** `/docs` on any running instance
 
 > Selene is a research and educational prototype for preliminary planning. Results are labelled with their data source and fidelity. It is not a flight-certified mission-design or landing-safety system.
@@ -167,19 +167,14 @@ The image installs `requirements-runtime.txt`, runs as a non-root user, and star
 
 ### Render
 
-1. **New → Web Service**, connect this repository, and choose the **Docker** runtime.
-2. Set **Health Check Path** to `/api/health`.
-3. Add these environment variables:
+This repository includes a [render.yaml](render.yaml) Blueprint, which defines a free Docker web service with all of its environment variables.
 
-   ```
-   PORT=8000
-   CORS_ORIGINS=https://coruscating-melomakarona-7267df.netlify.app
-   TRUSTED_HOSTS=<your-service>.onrender.com
-   GROQ_API_KEY=<optional>
-   ```
+1. In the Render dashboard, go to **New → Blueprint** and select this repository.
+2. When Render prompts for `GROQ_API_KEY`, enter it. Leave it empty to disable the chatbot.
+3. Click **Apply**. When the deploy finishes, open `https://<your-service>.onrender.com/api/health` to check it's running.
+4. Put `https://<your-service>.onrender.com` into the frontend's `VITE_API_BASE_URL` and rebuild the frontend.
 
-   To rate-limit each visitor separately rather than per Render proxy, also set `TRUST_PROXY_HEADERS=true` and `TRUSTED_PROXY_IPS` to the CIDR of Render's internal proxy.
-4. Put the resulting `https://<your-service>.onrender.com` into the frontend's `VITE_API_BASE_URL` and rebuild the frontend.
+To serve a different frontend, change `CORS_ORIGINS` in `render.yaml` or in the dashboard.
 
 On Render's free plan the service sleeps after about 15 minutes idle, so the first request afterwards takes 30–60 seconds.
 
