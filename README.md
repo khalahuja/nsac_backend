@@ -171,8 +171,8 @@ This repository includes a [render.yaml](render.yaml) Blueprint, which defines a
 
 1. In the Render dashboard, go to **New → Blueprint** and select this repository.
 2. When Render prompts for `GROQ_API_KEY`, enter it. Leave it empty to disable the chatbot.
-3. Click **Apply**. When the deploy finishes, open `https://<your-service>.onrender.com/api/health` to check it's running.
-4. Put `https://<your-service>.onrender.com` into the frontend's `VITE_API_BASE_URL` and rebuild the frontend.
+3. Click **Apply**. When the deploy finishes, open `https://nsac-backend.onrender.com/api/health` to check it's running.
+4. Put `https://nsac-backend.onrender.com` into the frontend's `VITE_API_BASE_URL` and rebuild the frontend.
 
 To serve a different frontend, change `CORS_ORIGINS` in `render.yaml` or in the dashboard.
 
