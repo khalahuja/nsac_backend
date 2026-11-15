@@ -181,11 +181,13 @@ async def protect_chat(request: Request, response: Response) -> None:
         except ValueError as error:
             raise HTTPException(status_code=400, detail="Invalid Content-Length header.") from error
 
-    if request.headers.get("sec-fetch-site", "").lower() == "cross-site":
-        raise HTTPException(status_code=403, detail="Cross-site chat requests are not allowed.")
-
     origin = request.headers.get("origin")
     allowed_origins = set(settings.cors_origin_list)
+    # A separately hosted frontend (e.g. Netlify -> Render) is always cross-site,
+    # so only cross-site requests from an explicitly allowed origin pass.
+    if request.headers.get("sec-fetch-site", "").lower() == "cross-site" and origin not in allowed_origins:
+        raise HTTPException(status_code=403, detail="Cross-site chat requests are not allowed.")
+
     if origin and origin not in allowed_origins:
         raise HTTPException(status_code=403, detail="This website origin is not allowed to use the assistant.")
     if settings.chat_require_origin and not origin:
