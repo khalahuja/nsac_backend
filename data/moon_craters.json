@@ -1,0 +1,14 @@
+[
+  {"name":"Tycho","lat":-43.31,"lon":-11.36,"diameterKm":85,"note":"Young bright-rayed impact crater in the southern highlands."},
+  {"name":"Copernicus","lat":9.62,"lon":-20.08,"diameterKm":93,"note":"Prominent terraced crater on Oceanus Procellarum."},
+  {"name":"Kepler","lat":8.1,"lon":-38.0,"diameterKm":32,"note":"Small crater with a strong ray system west of Copernicus."},
+  {"name":"Aristarchus","lat":23.73,"lon":-47.49,"diameterKm":40,"note":"One of the brightest large craters on the Moon."},
+  {"name":"Plato","lat":51.62,"lon":-9.38,"diameterKm":101,"note":"Dark-floored crater on the northern edge of Mare Imbrium."},
+  {"name":"Clavius","lat":-58.62,"lon":-14.73,"diameterKm":231,"note":"Huge southern crater with a distinctive arc of internal craters."},
+  {"name":"Mare Imbrium","lat":34.7,"lon":-15.6,"diameterKm":1145,"note":"Large basaltic impact basin, shown as a subtle circular feature."},
+  {"name":"Mare Crisium","lat":17.0,"lon":59.1,"diameterKm":555,"note":"Isolated round mare basin on the near-side east limb."},
+  {"name":"Orientale Basin","lat":-19.4,"lon":-92.8,"diameterKm":930,"note":"Multi-ring basin near the western limb/far side boundary."},
+  {"name":"South Pole-Aitken","lat":-53.0,"lon":169.0,"diameterKm":2500,"note":"Immense ancient far-side basin near the lunar south pole."},
+  {"name":"Tsiolkovskiy","lat":-20.4,"lon":129.1,"diameterKm":185,"note":"Major far-side crater with a dark basaltic floor."},
+  {"name":"Schrodinger","lat":-74.7,"lon":132.9,"diameterKm":312,"note":"Large young basin near the lunar south pole."}
+]

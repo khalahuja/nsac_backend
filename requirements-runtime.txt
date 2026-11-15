@@ -1,0 +1,10 @@
+# Unified lightweight runtime; optional SPICE/geospatial extras are excluded.
+fastapi==0.161.1
+uvicorn==0.32.1
+pydantic==2.10.4
+pydantic-settings==2.7.0
+httpx==0.28.1
+tzdata>=2025.1
+numpy==2.2.1
+openpyxl==3.1.5
+langgraph==1.2.14

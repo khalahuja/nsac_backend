@@ -1,0 +1,25 @@
+# --- Python ----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# --- Environment -----------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# --- Local account database ------------------------------------------------
+data/*.sqlite3*
+data/accounts/
+
+# --- Logs / editor / OS ----------------------------------------------------
+*.log
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

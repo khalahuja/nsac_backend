@@ -1,0 +1,33 @@
+# --- Core API -------------------------------------------------------------
+fastapi==0.161.1
+uvicorn[standard]==0.32.1
+pydantic==2.10.4
+pydantic-settings==2.7.0
+
+# --- Scientific computing --------------------------------------------------
+numpy==2.2.1
+scipy==1.15.0
+pandas==2.2.3
+openpyxl==3.1.5
+tzdata>=2025.1
+
+# --- Astronomy (optional at runtime) ---------------------------------------
+# Only needed when USE_SPICE=true. The app falls back to its analytic
+# ephemeris if this import fails, so installation is not mandatory.
+spiceypy==6.0.0
+
+# --- Geospatial (optional at runtime) --------------------------------------
+# Only needed when USE_TERRAIN_DEM=true. rasterio ships manylinux/Windows
+# wheels bundling GDAL, so a separate GDAL install is normally unnecessary.
+# Comment these out if the wheels are unavailable for your platform; the app
+# falls back to the flat spherical terrain model.
+rasterio==1.4.3
+xarray==2025.1.1
+
+# --- Testing ---------------------------------------------------------------
+pytest==8.3.4
+httpx==0.28.1
+langgraph==1.2.14
+
+# Encrypted account/session database (accounts and sessions).
+sqlcipher3==0.6.4
