@@ -11,7 +11,7 @@ from __future__ import annotations
 from functools import lru_cache
 from pathlib import Path
 
-from pydantic import Field, SecretStr
+from pydantic import Field, SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 #: Repository root (…/backend/app/config.py -> …/)
@@ -42,6 +42,18 @@ class Settings(BaseSettings):
     )
 
     groq_api_key: SecretStr = SecretStr("")
+
+    @field_validator("groq_api_key", mode="before")
+    @classmethod
+    def _clean_groq_key(cls, value):
+        # Dashboard pastes often carry whitespace, quotes or a "GROQ_API_KEY=" prefix.
+        if isinstance(value, SecretStr):
+            value = value.get_secret_value()
+        if isinstance(value, str):
+            value = value.strip().strip("'\"").strip()
+            if value.upper().startswith("GROQ_API_KEY="):
+                value = value.split("=", 1)[1].strip().strip("'\"").strip()
+        return value
     #: Token-light primary: fewest prompt tokens and no hidden reasoning (tested: grounded answers, valid JSON).
     groq_model: str = "qwen/qwen3.8-27b"
     #: Tried in order when the main model hits its quota or is unavailable.
